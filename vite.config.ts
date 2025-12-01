@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
     const isDev = mode === 'development';
     
     return {
-      base: '/ODMSYNC/',
+      base: '/',
       server: isDev ? {
         port: 5173,
         host: '0.0.0.0',
