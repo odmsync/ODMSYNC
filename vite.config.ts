@@ -6,8 +6,14 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
     const isDev = mode === 'development';
     
+    // Base path configuration:
+    // - Use VITE_BASE_PATH env var if set (defaults to '/' for Netlify)
+    // - Default to '/' for all environments (Netlify deployment)
+    // - Can be overridden with VITE_BASE_PATH='/ODMSYNC/' for GitHub Pages if needed
+    const basePath = env.VITE_BASE_PATH || '/';
+    
     return {
-      base: '/',
+      base: basePath,
       server: isDev ? {
         port: 5173,
         host: '0.0.0.0',
