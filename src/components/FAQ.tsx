@@ -48,7 +48,7 @@ const FAQ: React.FC = () => {
               >
                 <button
                   onClick={() => toggleFAQ(faq.id)}
-                  className="w-full flex justify-between items-center p-5 text-start focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 cursor-pointer"
+                  className="w-full flex justify-between items-center p-5 text-start min-h-[60px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-50 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-200"
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${faq.id}`}
                 >

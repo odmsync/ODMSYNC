@@ -10,6 +10,7 @@ export const translations = {
       contact: 'Contact',
       client_login: 'Client Login',
       status: 'Status',
+      tagline: 'North Lebanon Internet • Tripoli • Mina • Koura • Zgharta',
     },
     trustBadges: {
       title: 'Why Choose ODMSYNC',
@@ -23,39 +24,51 @@ export const translations = {
       installationDesc: 'Expert setup by certified technicians',
     },
     hero: {
-      badge: 'Beyond Connectivity.',
-      title1: 'Connecting Lebanon with',
-      title2: 'Speed, Stability, and Heart.',
-      subtitle: 'Experience internet built for people who expect more — performance that never quits, service that actually cares.',
-      cta_coverage: 'Check Our Coverage',
-      cta_plans: 'Explore Our Plans',
+      badge: 'Internet that survives Lebanon.',
+      hook: 'Internet that survives Lebanon.',
+      title1: 'Experience the Fastest Internet in',
+      title2: 'North Lebanon.',
+      subtitle: 'Reliable fiber and wireless plans built for Lebanon\'s reality – power cuts, generators, and crowded peak hours. Tailored options for your home, shop, or office.',
+      cta_plans: 'View Plans',
+      cta_whatsapp: 'Contact via WhatsApp',
       features: {
-        support: '24/7 Support',
-        install: '48h Install',
-        uptime: '99.9% Uptime',
+        support: {
+          title: '24/7 Local Support',
+          desc: 'WhatsApp or call – real people from North Lebanon answer.'
+        },
+        power: {
+          title: 'Works During Power Cuts',
+          desc: 'Backup power on our side so your line stays stable longer.'
+        },
+        speed: {
+          title: 'Stable, Honest Speeds',
+          desc: 'Plans we can actually deliver, not just marketing numbers.'
+        }
       }
     },
     problem: {
       title: 'Shu Akhbaruk Ma3 Slow Internet?',
-      subtitle: 'Tired of slow internet? We fixed it.',
+      subtitle: 'Tired of internet that dies with the electricity? Here\'s how we fix it.',
       struggle_title: 'The Struggle',
       fix_title: 'The ODMSYNC Fix',
       struggle_points: [
-        'Cuts during power outages',
-        'Speeds don\'t match promises',
-        'Support never answers',
-        'Hidden fees & unfair pricing'
+        'Cuts every time electricity changes source',
+        'Speeds don\'t match what you were promised',
+        'Support replies after days – or never',
+        'Hidden fees, surprise limits, and throttling'
       ],
       fix_points: [
-        'Backup power system included',
-        'Real 100+ Mbps speeds',
-        'Support in 5 mins (WhatsApp)',
-        'Transparent pricing'
+        'Backup power on our towers and core routers',
+        'Stable 25–100 Mbps plans, tested in North Lebanon',
+        'WhatsApp support in under 5–10 minutes (70977970)',
+        'Transparent fair-use policies, no hidden fees'
       ]
     },
     speedtest: {
       title: 'Real-Time Speed Test',
-      subtitle: 'Analyze your current network performance and see how it stacks up.',
+      subtitle: 'Run a live speed test and see how your current connection performs. For best accuracy, connect by cable and close downloads/streams before testing.',
+      iframe_title: 'ODM Internet Speed Test',
+      note: 'Note: This test measures your connection to our test server. Results depend on your router, Wi-Fi signal, device, and time of day.',
       start: 'Start Speed Test',
       retest: 'Retest Connection',
       cancel: 'Cancel Test',
@@ -91,30 +104,44 @@ export const translations = {
     },
     coverage: {
       title: 'Check If We Serve Your Area',
-      subtitle: 'We are expanding rapidly across Lebanon.',
+      subtitle: 'We are expanding rapidly across North Lebanon. Start by checking your neighborhood.',
       map_loaded: 'Interactive Map Loaded',
       search_title: 'Search Your Neighborhood',
       address_label: 'Address or Area',
-      placeholder: 'e.g., Hamra, Street 42',
+      placeholder: 'e.g. Mina, Dam w Farz, Abu Samra…',
       check_btn: 'Check Availability',
+      checking: 'Checking...',
       result_covered: 'Great news! We cover your area.',
       result_covered_desc: 'Installation available within 48 hours.',
       result_coming: 'Coming Soon!',
       result_coming_desc: 'We are expanding to your area next month. Join the waitlist.',
       result_none: 'Not covered yet',
-      result_none_desc: 'We don\'t cover this area yet, but request it to speed up our expansion!'
+      result_none_desc: 'We don\'t cover this area yet, but request it to speed up our expansion!',
+      covered_areas_title: 'Covered Areas',
+      currently_covered: 'Currently Covered',
+      coming_soon: 'Coming Soon',
+      whatsapp_note: 'If your area isn\'t listed, send us a WhatsApp and we\'ll check coverage for you.'
     },
     why: {
-      title: 'Why 5,000+ Lebanese Trust ODMSYNC',
-      feature: 'Feature',
-      odm: 'ODMSYNC',
-      others: 'Others',
-      features: {
-        speed: 'Real Speed',
-        power: 'Works in Blackout',
-        support: '24/7 Support',
-        fees: 'No Hidden Fees',
-        contracts: 'No Contracts'
+      title: 'Why North Lebanon Trusts ODMSYNC',
+      subtitle: 'From Tripoli streets to Qalamoun roofs, customers choose us for stability, honesty, and fast help when something goes wrong.',
+      benefits: {
+        speed: {
+          title: 'Real, Stable Speed',
+          desc: 'We design plans around what we can actually deliver in your area – not just marketing speeds.'
+        },
+        power: {
+          title: 'Works With Power Cuts',
+          desc: 'Backup power on our side helps keep your line alive even when EDL is playing games.'
+        },
+        support: {
+          title: 'Fast WhatsApp Support',
+          desc: 'You message, we answer. Most issues start getting attention within minutes, not days.'
+        },
+        fair: {
+          title: 'Clear and Fair',
+          desc: 'No hidden fees, no surprise throttling. We explain everything before you sign.'
+        }
       }
     },
     testimonials: {
@@ -127,6 +154,8 @@ export const translations = {
     contact: {
       title: 'Get in Touch',
       subtitle: 'Have a question? Our team is ready to help you.',
+      location_text: 'Tripoli • Mina • Dam w Farz • North Lebanon',
+      whatsapp_button: 'Chat with ODMSYNC Support',
       name: 'Full Name',
       phone: 'Phone Number',
       email: 'Email Address',
@@ -150,6 +179,7 @@ export const translations = {
     },
     footer: {
       desc: 'Proudly serving Lebanon 🇱🇧 with fiber-speed internet, even during power cuts.',
+      fast_internet: 'Fast Internet for Lebanon',
       quick_links: 'Quick Links',
       contact: 'Contact',
       copyright: '© 2024 ODMSYNC - Optic Data Mesh Lebanon. Made with ❤️ for Lebanese internet lovers.',
@@ -176,7 +206,7 @@ export const translations = {
     equipment: {
       title: 'Premium Equipment',
       subtitle: 'Get the best hardware for your connection. Access to modern, reliable equipment.',
-      cta_text: 'Need help choosing the right equipment?',
+      cta_text: 'Not sure what you need? Contact us and we\'ll size the equipment for your home or business.',
       cta_button: 'Contact Us',
       categories: {
         router: 'ROUTER',
@@ -186,26 +216,35 @@ export const translations = {
       },
       items: {
         router: {
-          name: 'Dual Band WiFi 6 Router',
-          description: 'High speed coverage for apartments.',
+          name: 'Dual Band Wi-Fi 6 Router',
+          description: 'Strong, stable coverage for apartments and small homes. Supports multiple devices without choking.',
+          features: ['Wi-Fi 6 speed & stability', 'Stronger wall penetration', 'Quick plug-and-play setup'],
+          availability: 'Available • Price on request'
         },
         ups: {
           name: 'Mini UPS for Router',
-          description: 'Keep internet on during power cuts (4-6 hours).',
+          description: 'Keeps your router alive during power cuts so your internet doesn\'t die with EDL.',
+          features: ['4–6 hours backup', 'Silent operation', 'Protects against small voltage drops'],
+          availability: 'Available • Recommended'
         },
         ont: {
           name: 'Fiber ONT Modem',
-          description: 'Essential for fiber connection.',
+          description: 'Required for fiber lines when available in your building.',
+          features: ['Supports high-speed fiber', 'Stable and secure', 'Installed by our technicians'],
+          availability: 'Available where fiber exists'
         },
         mesh: {
-          name: 'Mesh WiFi System (3-Pack)',
-          description: 'Whole home coverage, no dead zones.',
+          name: 'Mesh Wi-Fi System (3-Pack)',
+          description: 'Full home coverage with no dead zones for duplexes and large apartments.',
+          features: ['3-pack whole-home coverage', 'Smooth roaming between rooms', 'Perfect for families and offices'],
+          availability: 'Available • Request a quote'
         },
       },
     },
     login: {
       title: 'Client Login',
       subtitle: 'Access your account to manage your services',
+      subtitle_portal: 'Portal is under development. For now, manage your account by WhatsApp or phone with our support team.',
       email: 'Email Address',
       phone: 'Phone Number',
       password: 'Password',
@@ -219,14 +258,19 @@ export const translations = {
     },
     status: {
       title: 'Service Status',
-      subtitle: 'Real-time network status and maintenance updates',
+      subtitle: 'Real-time network status and maintenance updates for ODM-LB.',
       operational: 'All Systems Operational',
-      operational_desc: 'All services are running normally',
+      operational_desc: 'All main links and towers are running normally. Any planned maintenance will be announced here and on WhatsApp.',
       maintenance: 'Planned Maintenance',
       outage: 'Service Outage',
       affected_areas: 'Affected Areas',
       no_issues: 'No current issues reported',
       last_updated: 'Last Updated',
+    },
+    floating_whatsapp: {
+      label: 'Chat with ODMSYNC Support',
+      aria_label: 'Chat with ODMSYNC Support on WhatsApp',
+      title: 'Chat with ODMSYNC Support',
     }
   },
   ar: {
@@ -239,6 +283,7 @@ export const translations = {
       contact: 'اتصل بنا',
       client_login: 'تسجيل الدخول',
       status: 'الحالة',
+      tagline: 'إنترنت شمال لبنان • طرابلس • المينا • الكورة • زغرتا',
     },
     trustBadges: {
       title: 'ليش تختار ODMSYNC',
@@ -252,39 +297,51 @@ export const translations = {
       installationDesc: 'تركيب من خبراء معتمدين',
     },
     hero: {
-      badge: 'مش بس إنترنت.',
-      title1: 'منوصل لبنان بـ',
-      title2: 'سرعة، استقرار، ومن القلب.',
-      subtitle: 'عيش تجربة إنترنت معمولة للناس اللي بدا أكتر — أداء ما بيوقف، وخدمة بتهتم فيك عن جد.',
-      cta_coverage: 'تأكد من التغطية',
+      badge: 'إنترنت بيضل شغّال بلبنان.',
+      hook: 'إنترنت بيضل شغّال بلبنان.',
+      title1: 'جرب أسرع إنترنت في',
+      title2: 'شمال لبنان.',
+      subtitle: 'باقات فايبر ولاسلكية موثوقة مصممة لواقع لبنان – انقطاع الكهرباء، المولدات، وساعات الذروة المزدحمة. خيارات مخصصة لبيتك، محلّك، أو مكتبك.',
       cta_plans: 'شوف الباقات',
+      cta_whatsapp: 'تواصل عبر واتساب',
       features: {
-        support: 'دعم 24/7',
-        install: 'تركيب 48 ساعة',
-        uptime: '99.9% استقرار',
+        support: {
+          title: 'دعم محلي 24/7',
+          desc: 'واتساب أو اتصال – ناس حقيقية من شمال لبنان بيردوا.'
+        },
+        power: {
+          title: 'شغال وقت القطعة',
+          desc: 'طاقة احتياطية عندنا عالبرج عشان الخط يضل ثابت أكتر.'
+        },
+        speed: {
+          title: 'سرعة ثابتة وصادقة',
+          desc: 'باقات نقدر نقدمها فعلاً، مو أرقام تسويق بس.'
+        }
       }
     },
     problem: {
       title: 'شو أخبارك مع الإنترنت البطيء؟',
-      subtitle: 'تعبت من البطء؟ نحنا حليناها.',
+      subtitle: 'تعبت من الإنترنت اللي بيموت مع الكهربا؟ هون كيف نحنا نحلها.',
       struggle_title: 'المعاناة',
       fix_title: 'حل ODMSYNC',
       struggle_points: [
-        'بينقطع مع اشتراك الموتور',
-        'السرعة غير عن الحكي',
-        'الدعم الفني ما برد',
-        'رسوم مخفية وأسعار مش واضحة'
+        'بينقطع كل مرة الكهربا بتغير مصدر',
+        'السرعة غير عن اللي وعدوك فيها',
+        'الدعم الفني بيرد بعد أيام – أو ما بيرد أبداً',
+        'رسوم مخفية، حدود مفاجئة، وthrottling'
       ],
       fix_points: [
-        'نظام طاقة احتياطي (شغال 24/7)',
-        'سرعة حقيقية 100+ ميقا',
-        'دعم عبر واتساب خلال 5 دقايق',
-        'أسعار شفافة وواضحة'
+        'طاقة احتياطية على أبراجنا والراوترات الأساسية',
+        'باقات ثابتة 25–100 ميقا، مجربة بشمال لبنان',
+        'دعم واتساب خلال 5–10 دقايق (70977970)',
+        'سياسات استخدام عادل شفافة، بدون رسوم مخفية'
       ]
     },
     speedtest: {
       title: 'فحص السرعة المباشر',
-      subtitle: 'حلل أداء شبكتك وشوف الفرق بعينك.',
+      subtitle: 'شغّل فحص سرعة مباشر وشوف كيف اتصالك الحالي. لأدق نتيجة، أوصل بالكيبل وأغلق التنزيلات/الستريمنج قبل الفحص.',
+      iframe_title: 'فحص سرعة الإنترنت ODM',
+      note: 'ملاحظة: هالفحص بقيّس اتصالك بسيرفر الفحص. النتيجة بتعتمد على الراوتر، إشارة الواي فاي، الجهاز، ووقت اليوم.',
       start: 'بلش الفحص',
       retest: 'عيد الفحص',
       cancel: 'إلغاء',
@@ -310,7 +367,7 @@ export const translations = {
     },
     plans: {
       title: 'باقات بسيطة. أسعار واضحة.',
-      subtitle: 'ادفع بالليرة أو الدولار. ما في صرف مخفي.',
+      subtitle: 'ادفع بالليرة أو الدولار. بدون رسوم مخفية، بدون حدود مخفية. الأسعار النهائية بتتأكد معك على واتساب أو تلفون.',
       per_mo: '/شهرياً',
       choose: 'اختر',
       ideal_for: 'ممتازة لـ',
@@ -320,30 +377,44 @@ export const translations = {
     },
     coverage: {
       title: 'تأكد إذا واصلين لعندك',
-      subtitle: 'عم نتوسع بسرعة بكل لبنان.',
+      subtitle: 'عم نتوسع بسرعة بشمال لبنان. ابدأ بفحص منطقتك.',
       map_loaded: 'الخريطة جاهزة',
       search_title: 'فتش بمنطقتك',
       address_label: 'العنوان أو المنطقة',
-      placeholder: 'مثلاً: الحمرا، شارع 42',
+      placeholder: 'مثلاً: المينا، دام و فرز، أبو سمرة...',
       check_btn: 'تأكد من التوفر',
+      checking: 'جاري التحقق...',
       result_covered: 'خبر حلو! نحنا مغطيين منطقتك.',
       result_covered_desc: 'التركيب متوفر خلال 48 ساعة.',
       result_coming: 'قريباً جداً! ⏳',
       result_coming_desc: 'واصلين لعندك الشهر الجاي. سجل اسمك.',
       result_none: 'مش مغطيين بعد ❌',
-      result_none_desc: 'لسه ما وصلنا لهون، بس اطلب التغطية لتسرع وصولنا!'
+      result_none_desc: 'لسه ما وصلنا لهون، بس اطلب التغطية لتسرع وصولنا!',
+      covered_areas_title: 'المناطق المغطاة',
+      currently_covered: 'مغطاة حالياً',
+      coming_soon: 'قريباً',
+      whatsapp_note: 'إذا منطقتك مش مذكورة، أرسلنا واتساب وبنفحص التغطية عندك.'
     },
     why: {
-      title: 'ليش 5,000+ لبناني وثقوا بـ ODMSYNC',
-      feature: 'الميزة',
-      odm: 'ODMSYNC',
-      others: 'غيرنا',
-      features: {
-        speed: 'سرعة حقيقية',
-        power: 'شغال وقت القطعة',
-        support: 'دعم 24/7',
-        fees: 'بدون رسوم مخفية',
-        contracts: 'بدون عقود ملزمة'
+      title: 'ليش شمال لبنان يثق بـ ODMSYNC',
+      subtitle: 'من شوارع طرابلس لأسطح القلمون، الزبائن بختارونا للاستقرار، الصدق، والمساعدة السريعة لما في مشكلة.',
+      benefits: {
+        speed: {
+          title: 'سرعة ثابتة وحقيقية',
+          desc: 'بنصمم الباقات على أساس السرعات اللي نقدر نقدمها فعلاً بمنطقتك – مو بس سرعات تسويق.'
+        },
+        power: {
+          title: 'شغال مع القطعة',
+          desc: 'طاقة احتياطية عندنا بتساعد الخط يضل شغال حتى لو EDL عم تلعب.'
+        },
+        support: {
+          title: 'دعم واتساب سريع',
+          desc: 'أنت بترسل، نحنا بنرد. معظم المشاكل بتبلش تاخد اهتمام خلال دقايق، مو أيام.'
+        },
+        fair: {
+          title: 'واضح وعادل',
+          desc: 'بدون رسوم مخفية، بدون throttling مفاجئ. بنشرح كل شي قبل ما توقع.'
+        }
       }
     },
     testimonials: {
@@ -356,6 +427,8 @@ export const translations = {
     contact: {
       title: 'تواصل معنا',
       subtitle: 'عندك استفسار؟ فريقنا جاهز للمساعدة.',
+      location_text: 'طرابلس • المينا • دام و فرز • شمال لبنان',
+      whatsapp_button: 'دردش مع دعم ODMSYNC',
       name: 'الاسم الكامل',
       phone: 'رقم التلفون',
       email: 'البريد الإلكتروني',
@@ -379,6 +452,7 @@ export const translations = {
     },
     footer: {
       desc: 'بكل فخر عم نخدم لبنان 🇱🇧 بإنترنت فايبر، حتى وقت قطعة الكهرباء.',
+      fast_internet: 'إنترنت سريع للبنان',
       quick_links: 'روابط سريعة',
       contact: 'اتصل فينا',
       copyright: '© 2024 ODMSYNC - Optic Data Mesh Lebanon. انعملت بـ ❤️ لعشاق الإنترنت بلبنان.',
@@ -405,7 +479,7 @@ export const translations = {
     equipment: {
       title: 'معدات عالية الجودة',
       subtitle: 'احصل على أفضل الأجهزة لاتصالك. الوصول إلى معدات حديثة وموثوقة.',
-      cta_text: 'تحتاج مساعدة في اختيار المعدات المناسبة؟',
+      cta_text: 'مش متأكد شو محتاج؟ تواصل معنا وبنحدد المعدات المناسبة لبيتك أو عملك.',
       cta_button: 'اتصل بنا',
       categories: {
         router: 'راوتر',
@@ -415,20 +489,28 @@ export const translations = {
       },
       items: {
         router: {
-          name: 'راوتر WiFi 6 ثنائي النطاق',
-          description: 'تغطية عالية السرعة للشقق.',
+          name: 'راوتر Wi-Fi 6 ثنائي النطاق',
+          description: 'تغطية قوية وثابتة للشقق والمنازل الصغيرة. يدعم عدة أجهزة بدون تعطيل.',
+          features: ['سرعة واستقرار Wi-Fi 6', 'اختراق أقوى للجدران', 'إعداد سريع plug-and-play'],
+          availability: 'متوفر • السعر عند الطلب'
         },
         ups: {
           name: 'UPS صغير للراوتر',
-          description: 'حافظ على الإنترنت أثناء انقطاع الكهرباء (4-6 ساعات).',
+          description: 'بيحافظ على الراوتر شغال وقت القطعة عشان الإنترنت ما يموت مع EDL.',
+          features: ['4–6 ساعات احتياطي', 'تشغيل صامت', 'حماية من انخفاضات الجهد الصغيرة'],
+          availability: 'متوفر • موصى به'
         },
         ont: {
           name: 'مودم ONT للألياف',
-          description: 'ضروري للاتصال بالألياف.',
+          description: 'مطلوب لخطوط الألياف عند توفرها في المبنى.',
+          features: ['يدعم الألياف عالية السرعة', 'ثابت وآمن', 'تركيب من قبل فنيينا'],
+          availability: 'متوفر حيث يوجد الألياف'
         },
         mesh: {
-          name: 'نظام Mesh WiFi (3 قطع)',
-          description: 'تغطية كاملة للمنزل، بدون مناطق ميتة.',
+          name: 'نظام Mesh Wi-Fi (3 قطع)',
+          description: 'تغطية كاملة للمنزل بدون مناطق ميتة للدوبلكس والشقق الكبيرة.',
+          features: ['3 قطع تغطية كاملة للمنزل', 'تنقل سلس بين الغرف', 'مثالي للعائلات والمكاتب'],
+          availability: 'متوفر • اطلب عرض سعر'
         },
       },
     },
@@ -448,14 +530,19 @@ export const translations = {
     },
     status: {
       title: 'حالة الخدمة',
-      subtitle: 'حالة الشبكة في الوقت الفعلي وتحديثات الصيانة',
+      subtitle: 'حالة الشبكة في الوقت الفعلي وتحديثات الصيانة لـ ODM-LB.',
       operational: 'جميع الأنظمة تعمل',
-      operational_desc: 'جميع الخدمات تعمل بشكل طبيعي',
+      operational_desc: 'جميع الروابط الرئيسية والأبراج تعمل بشكل طبيعي. أي صيانة مخطط لها رح تعلن هون وعلى الواتساب.',
       maintenance: 'صيانة مخطط لها',
       outage: 'انقطاع الخدمة',
       affected_areas: 'المناطق المتأثرة',
       no_issues: 'لا توجد مشاكل حالية',
       last_updated: 'آخر تحديث',
+    },
+    floating_whatsapp: {
+      label: 'دعم ODMSYNC',
+      aria_label: 'تواصل مع دعم ODMSYNC على واتساب',
+      title: 'تواصل مع دعم ODMSYNC',
     }
   }
 };

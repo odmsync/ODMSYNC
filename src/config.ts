@@ -1,17 +1,7 @@
 /**
  * Configuration module
  * Centralized app configuration with environment variable handling
- * Uses ONLY import.meta.env (Vite client-side environment variables)
  */
-
-/**
- * Get API key from environment (client-side only)
- * @returns API key string or empty string if not found
- */
-const getApiKey = (): string => {
-  // Only use import.meta.env - Vite automatically exposes VITE_ prefixed vars
-  return import.meta.env.VITE_GEMINI_API_KEY || '';
-};
 
 /**
  * Get base URL dynamically based on environment
@@ -44,9 +34,6 @@ export const config = {
   brandName: 'ODMSYNC',
   domain: getDomain(),
   baseUrl: getBaseUrl(),
-  api: {
-    geminiKey: getApiKey(),
-  },
   features: {
     analytics: true,
     speedTest: true,

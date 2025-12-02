@@ -14,51 +14,51 @@ const Footer: React.FC = () => {
       dir={dir.direction}
       aria-label="ODMSYNC Footer"
     >
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Section */}
           <div>
-            <div className="flex items-center text-blue-500 mb-4">
-              <Wifi className="h-6 w-6 mr-2" />
-              <span className="font-bold text-xl text-white">ODMSYNC</span>
+            <div className="flex items-center text-blue-500 mb-6">
+              <Wifi className="h-7 w-7 mr-3" />
+              <span className="font-bold text-2xl text-white">ODMSYNC</span>
             </div>
-            <p className="text-sm text-gray-400 mb-4">
+            <p className="text-sm text-gray-400 mb-6 leading-relaxed">
               {t.footer.desc}
             </p>
-            <div className="flex items-center gap-2 text-sm text-gray-400">
-              <MapPin className="h-4 w-4" />
+            <div className="flex items-center gap-3 text-sm text-gray-400">
+              <MapPin className="h-5 w-5 text-blue-500" />
               <span>{t.footer.address}</span>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">
+            <h3 className="text-sm font-bold text-gray-300 tracking-wider uppercase mb-6">
               {t.footer.quick_links}
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               <li>
-                <a href="#plans" className="hover:text-blue-500 transition-colors text-sm">
+                <a href="#plans" className="hover:text-blue-400 transition-colors text-sm text-gray-400 hover:translate-x-1 inline-block transform duration-200">
                   {t.nav.pricing}
                 </a>
               </li>
               <li>
-                <a href="#coverage" className="hover:text-blue-500 transition-colors text-sm">
+                <a href="#coverage" className="hover:text-blue-400 transition-colors text-sm text-gray-400 hover:translate-x-1 inline-block transform duration-200">
                   {t.nav.coverage}
                 </a>
               </li>
               <li>
-                <a href="#equipment" className="hover:text-blue-500 transition-colors text-sm">
+                <a href="#equipment" className="hover:text-blue-400 transition-colors text-sm text-gray-400 hover:translate-x-1 inline-block transform duration-200">
                   {t.nav.equipment}
                 </a>
               </li>
               <li>
-                <a href="#login" className="hover:text-blue-500 transition-colors text-sm">
+                <a href="#login" className="hover:text-blue-400 transition-colors text-sm text-gray-400 hover:translate-x-1 inline-block transform duration-200">
                   {t.nav.client_login}
                 </a>
               </li>
               <li>
-                <a href="#status" className="hover:text-blue-500 transition-colors text-sm">
+                <a href="#status" className="hover:text-blue-400 transition-colors text-sm text-gray-400 hover:translate-x-1 inline-block transform duration-200">
                   {t.nav.status}
                 </a>
               </li>
@@ -67,25 +67,25 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">
+            <h3 className="text-sm font-bold text-gray-300 tracking-wider uppercase mb-6">
               {t.footer.contact}
             </h3>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-sm">
-                <Phone className="h-4 w-4 text-blue-500 flex-shrink-0" />
-                <a href="tel:+96170977970" className="hover:text-blue-500 transition-colors">
+            <ul className="space-y-4">
+              <li className="flex items-center gap-3 text-sm">
+                <Phone className="h-5 w-5 text-blue-500 flex-shrink-0" />
+                <a href="tel:+96170977970" className="hover:text-blue-400 transition-colors text-gray-400">
                   +961 70 977 970
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-sm">
-                <MessageCircle className="h-4 w-4 text-blue-500 flex-shrink-0" />
-                <a href="https://wa.me/96170977970" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">
+              <li className="flex items-center gap-3 text-sm">
+                <MessageCircle className="h-5 w-5 text-blue-500 flex-shrink-0" />
+                <a href="https://wa.me/96170977970" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors text-gray-400">
                   WhatsApp
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-sm">
-                <Mail className="h-4 w-4 text-blue-500 flex-shrink-0" />
-                <a href="mailto:support@odmsync.com" className="hover:text-blue-500 transition-colors">
+              <li className="flex items-center gap-3 text-sm">
+                <Mail className="h-5 w-5 text-blue-500 flex-shrink-0" />
+                <a href="mailto:support@odmsync.com" className="hover:text-blue-400 transition-colors text-gray-400 break-all">
                   support@odmsync.com
                 </a>
               </li>
@@ -144,7 +144,7 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400 text-center md:text-left">
-              {t.footer.copyright}
+              {t.footer.copyright.replace('2024', new Date().getFullYear().toString())}
             </p>
             <div className={`flex ${dir.flexRow} gap-6 text-sm`}>
               <a href="#privacy" className="text-gray-400 hover:text-blue-500 transition-colors">

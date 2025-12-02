@@ -201,22 +201,22 @@ export const FAQS_EN: FAQItem[] = [
   {
     id: 'faq-diff',
     question: "How is ODM different from other ISPs?",
-    answer: "We're transparent. Real speeds, real support, real pricing. No BS. Try our speed test to see the difference."
+    answer: "We are local to North Lebanon, we answer on WhatsApp fast, we design plans around real speeds we can deliver in your area, and we invest in backup power so your line survives power cuts longer."
   },
   {
     id: 'faq-power',
     question: "Does it work during electricity cuts?",
-    answer: "Yes. Our system has backup power. You stay online even when the grid fails. (This is massive in Lebanon)"
+    answer: "Yes, up to a point. We use UPS and backup power on our side. If your own router and equipment are on UPS, your internet can stay online during most generator/EDL switches."
   },
   {
     id: 'faq-satisfaction',
     question: "What if I'm not satisfied?",
-    answer: "No contracts. Cancel anytime, no penalties. But 98% of customers stay with us."
+    answer: "We start with a trial period when possible. If we really can't deliver a stable line in your area, we are honest about it and help you decide what's best."
   },
   {
     id: 'faq-install',
     question: "How long is installation?",
-    answer: "Usually 24-48 hours. We call you to schedule. Installation is free."
+    answer: "In covered areas, we typically install within 24–72 hours depending on building access, equipment, and weather."
   },
 ];
 
@@ -224,22 +224,22 @@ export const FAQS_AR: FAQItem[] = [
   {
     id: 'faq-diff',
     question: "بشو بتتميز ODM عن غيرها؟",
-    answer: "نحنا واضحين. سرعة حقيقية، دعم حقيقي، وأسعار حقيقية. بلا لف ودوران. جرب فحص السرعة وشوف الفرق."
+    answer: "نحنا محليين بشمال لبنان، بنرد على الواتساب بسرعة، بنصمم الباقات على أساس سرعات حقيقية نقدر نقدمها بمنطقتك، وبنستثمر بطاقة احتياطية عشان الخط يضل شغال وقت القطعة أكتر."
   },
   {
     id: 'faq-power',
     question: "النت بضل شغال وقت تنقطع الكهربا؟",
-    answer: "أكيد. نظامنا عندو طاقة احتياطية (بطاريات وطاقة شمسية). بتضل أونلاين حتى لو الدولة والموتور مقطوعين."
+    answer: "أي، لحد حد معين. نحنا بنستخدم UPS وطاقة احتياطية عندنا. إذا الراوتر والمعدات عندك على UPS، الإنترنت فيك يضل أونلاين خلال معظم تبديلات الموتور/EDL."
   },
   {
     id: 'faq-satisfaction',
     question: "وإذا ما كنت مبسوط بالخدمة؟",
-    answer: "ما في عقود. فيك تلغي أيمتى ما بدك وبلا غرامات. بس 98% من زبوناتنا بضلوا معنا."
+    answer: "بنبلش بفترة تجريبية إذا أمكن. إذا فعلاً ما نقدر نقدم خط ثابت بمنطقتك، نحنا صادقين معك وبنساعدك تقرر شو الأفضل."
   },
   {
     id: 'faq-install',
     question: "أديش بدو وقت التركيب؟",
-    answer: "عادة 24 لـ 48 ساعة. مندقلك لنحدد وقت. والتركيب مجاني."
+    answer: "بالمناطق المغطاة، عادة بنركب خلال 24–72 ساعة حسب وصول المبنى، المعدات، والطقس."
   },
 ];
 

@@ -10,34 +10,26 @@ const WhyOdmsync: React.FC = () => {
   const benefits = [
     {
       icon: <Zap className="w-8 h-8" />,
-      title: language === 'ar' ? 'سرعة حقيقية' : 'Real Speed',
-      description: language === 'ar' 
-        ? 'سرعات فايبر حقيقية مش مشتركة. 100+ ميقا ثابتة حتى وقت الذروة.'
-        : 'Real fiber speeds, not shared. Consistent 100+ Mbps even during peak hours.',
+      title: t.why.benefits.speed.title,
+      description: t.why.benefits.speed.desc,
       color: 'blue'
     },
     {
       icon: <Shield className="w-8 h-8" />,
-      title: language === 'ar' ? 'شغال وقت القطعة' : 'Works During Power Cuts',
-      description: language === 'ar'
-        ? 'نظام طاقة احتياطي (UPS + شمسي). النت بضل شغال حتى لو الكهربا مقطوعة.'
-        : 'Backup power system (UPS + solar). Internet stays on even when electricity is cut.',
+      title: t.why.benefits.power.title,
+      description: t.why.benefits.power.desc,
       color: 'green'
     },
     {
       icon: <Headphones className="w-8 h-8" />,
-      title: language === 'ar' ? 'دعم 24/7' : '24/7 Support',
-      description: language === 'ar'
-        ? 'دعم فني عبر واتساب خلال 5 دقايق. فريق محلي بيفهم مشاكلك.'
-        : 'Technical support via WhatsApp in 5 minutes. Local team that understands your issues.',
+      title: t.why.benefits.support.title,
+      description: t.why.benefits.support.desc,
       color: 'purple'
     },
     {
       icon: <DollarSign className="w-8 h-8" />,
-      title: language === 'ar' ? 'أسعار شفافة' : 'Transparent Pricing',
-      description: language === 'ar'
-        ? 'بدون رسوم مخفية، بدون عقود ملزمة. ادفع بالليرة أو الدولار.'
-        : 'No hidden fees, no binding contracts. Pay in LBP or USD.',
+      title: t.why.benefits.fair.title,
+      description: t.why.benefits.fair.desc,
       color: 'orange'
     }
   ];
@@ -61,9 +53,7 @@ const WhyOdmsync: React.FC = () => {
             {t.why.title}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {language === 'ar' 
-              ? 'ليش آلاف اللبنانيين اختاروا ODMSYNC'
-              : 'Why thousands of Lebanese chose ODMSYNC'}
+            {t.why.subtitle}
           </p>
         </div>
 

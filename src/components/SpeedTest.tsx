@@ -1,176 +1,191 @@
-import React, { useState, useEffect } from 'react';
-import { Play, RefreshCw, Zap, TrendingUp, Sparkles } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getDirectionHelpers } from '@/utils/direction';
+import { Button } from '@/components/shared/Button';
+import { ArrowDown, Zap, Wifi, Activity } from 'lucide-react';
 
 const SpeedTest: React.FC = () => {
   const { t, language } = useLanguage();
   const dir = getDirectionHelpers(language);
-  const [status, setStatus] = useState<'idle' | 'testing' | 'completed'>('idle');
-  const [download, setDownload] = useState(0);
-  const [upload, setUpload] = useState(0);
-  const [ping, setPing] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const [summary, setSummary] = useState<string>('');
+  const [isVisible, setIsVisible] = useState(false);
+  const [testStarted, setTestStarted] = useState(false);
+  const testRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  const simulateTest = () => {
-    if (status === 'testing') return;
-    
-    setStatus('testing');
-    setProgress(0);
-    setDownload(0);
-    setUpload(0);
-    setPing(0);
-    setSummary('');
+  // Scroll to test section
+  const scrollToTest = () => {
+    testRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => {
+      setTestStarted(true);
+      setIsVisible(true);
+    }, 500);
+  };
 
-    // Simulate ping test
-    let currentProgress = 0;
-    const interval = setInterval(() => {
-      currentProgress += 2;
-      setProgress(currentProgress);
+  // Intersection Observer for fade-in animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-      if (currentProgress <= 30) {
-        // Ping phase
-        setPing(Math.floor(15 + Math.random() * 20));
-      } else if (currentProgress <= 70) {
-        // Download phase
-        const speed = Math.min(100, (currentProgress - 30) * 2.5);
-        setDownload(Math.floor(speed));
-      } else if (currentProgress <= 95) {
-        // Upload phase
-        const speed = Math.min(50, (currentProgress - 70) * 2);
-        setUpload(Math.floor(speed));
-      } else {
-        clearInterval(interval);
-        setProgress(100);
-        setStatus('completed');
-        generateSummary();
+    if (testRef.current) {
+      observer.observe(testRef.current);
+    }
+
+    return () => {
+      if (testRef.current) {
+        observer.unobserve(testRef.current);
       }
-    }, 50);
-  };
-
-  const generateSummary = () => {
-    const summaries = {
-      en: [
-        `Your connection shows ${download} Mbps download speed. This is ${download > 50 ? 'excellent' : download > 20 ? 'good' : 'below average'} for Lebanon.`,
-        `With ${upload} Mbps upload, you can ${upload > 20 ? 'easily' : 'manage to'} stream, video call, and upload files.`,
-        `Ping of ${ping}ms is ${ping < 30 ? 'excellent' : ping < 50 ? 'good' : 'acceptable'} for gaming and real-time apps.`,
-        download > 50 
-          ? `You're getting premium speeds! Perfect for 4K streaming, gaming, and work from home.`
-          : download > 20
-          ? `Your speed is decent. Consider upgrading for smoother 4K streaming and better gaming.`
-          : `Your connection needs improvement. ODMSYNC can boost you to 100+ Mbps with reliable fiber.`
-      ],
-      ar: [
-        `اتصالك يظهر ${download} ميقا تنزيل. هاد ${download > 50 ? 'ممتاز' : download > 20 ? 'كويس' : 'تحت المعدل'} بلبنان.`,
-        `مع ${upload} ميقا رفع، فيك ${upload > 20 ? 'بسهولة' : 'تدبر'} تستمري و تحكي فيديو و ترفع ملفات.`,
-        `Ping من ${ping}ms ${ping < 30 ? 'ممتاز' : ping < 50 ? 'كويس' : 'مقبول'} للألعاب والتطبيقات المباشرة.`,
-        download > 50
-          ? `عم تاخد سرعة ممتازة! مثالية للستريمنج 4K والألعاب والشغل من البيت.`
-          : download > 20
-          ? `سرعتك كويسة. فكر ترفع للباقة الأقوى لستريمنج 4K أفضل.`
-          : `اتصالك محتاج تحسين. ODMSYNC فيها ترفعك لـ 100+ ميقا بفايبر موثوق.`
-      ]
     };
-
-    setSummary(summaries[language].join(' '));
-  };
+  }, []);
 
   return (
     <section 
       id="speedtest" 
-      className="py-16 bg-gradient-to-b from-gray-900 to-gray-800 text-white"
+      className="py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden"
       dir={dir.direction}
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {t.speedtest.title}
-          </h2>
-          <p className="text-gray-400 text-lg">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-transparent to-blue-500/10 pointer-events-none" />
+      
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header Section */}
+        <div className="text-center mb-12 animate-fade-in">
+          <div className="inline-flex items-center justify-center gap-3 mb-6">
+            <div className="p-3 bg-blue-600/20 rounded-xl">
+              <Zap className="w-8 h-8 text-blue-400" />
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
+              {t.speedtest.title}
+            </h2>
+          </div>
+          <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
             {t.speedtest.subtitle}
           </p>
+
+          {/* Start Test Button */}
+          {!testStarted && (
+            <div className="flex justify-center animate-fade-in">
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={scrollToTest}
+                className="shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105 transition-all duration-300 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600"
+                icon={<ArrowDown className="w-5 h-5" />}
+                iconPosition="right"
+              >
+                {t.speedtest.start}
+              </Button>
+            </div>
+          )}
         </div>
 
-        <div className="bg-gray-800/50 backdrop-blur-lg rounded-2xl p-8 md:p-12 border border-gray-700">
-          {/* Speed Metrics */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="text-center p-6 bg-gray-900/50 rounded-xl">
-              <div className="text-gray-400 text-sm mb-2">{t.speedtest.download}</div>
-              <div className="text-4xl font-bold text-blue-400 mb-1">
-                {download.toFixed(0)}
-              </div>
-              <div className="text-xs text-gray-500">Mbps</div>
-            </div>
-            <div className="text-center p-6 bg-gray-900/50 rounded-xl">
-              <div className="text-gray-400 text-sm mb-2">{t.speedtest.upload}</div>
-              <div className="text-4xl font-bold text-green-400 mb-1">
-                {upload.toFixed(0)}
-              </div>
-              <div className="text-xs text-gray-500">Mbps</div>
-            </div>
-            <div className="text-center p-6 bg-gray-900/50 rounded-xl">
-              <div className="text-gray-400 text-sm mb-2">{t.speedtest.ping}</div>
-              <div className="text-4xl font-bold text-yellow-400 mb-1">
-                {ping}
-              </div>
-              <div className="text-xs text-gray-500">ms</div>
-            </div>
+        {/* Speed Test Container */}
+        <div 
+          ref={testRef}
+          className={`bg-gray-800/80 backdrop-blur-xl rounded-3xl p-6 md:p-10 border-2 border-gray-700/50 shadow-2xl transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          {/* Info Banner */}
+          <div className="mb-6 p-4 bg-blue-600/20 border border-blue-500/30 rounded-xl flex items-start gap-3">
+            <Activity className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-blue-100 leading-relaxed">
+              {t.speedtest.note}
+            </p>
           </div>
 
-          {/* Progress Bar */}
-          {status === 'testing' && (
-            <div className="w-full bg-gray-700 h-2 rounded-full overflow-hidden mb-8">
-              <div 
-                className="bg-gradient-to-r from-blue-500 to-cyan-500 h-full transition-all duration-75"
-                style={{ width: `${progress}%` }}
+          {/* Speed Test Iframe */}
+          <div className="relative w-full bg-gray-900/50 rounded-2xl overflow-hidden border border-gray-700/50 shadow-inner">
+            <div className="relative w-full" style={{ paddingBottom: 'min(600px, 75%)', minHeight: '500px' }}>
+              <iframe
+                ref={iframeRef}
+                src="https://openspeedtest.com/speedtest"
+                className="absolute top-0 left-0 w-full h-full rounded-xl"
+                loading={testStarted ? 'eager' : 'lazy'}
+                title={t.speedtest.iframe_title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ minHeight: '500px' }}
               />
             </div>
-          )}
-
-          {/* Control Button */}
-          <div className="text-center mb-8">
-            {status !== 'testing' ? (
-              <button
-                onClick={simulateTest}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-lg"
-              >
-                {status === 'idle' ? (
-                  <>
-                    <Play className="w-5 h-5" />
-                    {t.speedtest.start}
-                  </>
-                ) : (
-                  <>
-                    <RefreshCw className="w-5 h-5" />
-                    {t.speedtest.retest}
-                  </>
-                )}
-              </button>
-            ) : (
-              <div className="text-gray-400">
-                {language === 'ar' ? 'جاري الفحص...' : 'Testing...'}
-              </div>
-            )}
           </div>
 
-          {/* AI Summary */}
-          {status === 'completed' && summary && (
-            <div className="mt-8 p-6 bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-xl border border-blue-500/30">
-              <div className="flex items-start gap-3 mb-4">
-                <Sparkles className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
-                <div className="flex-1">
-                  <h3 className="font-bold text-lg mb-2 flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5" />
-                    {language === 'ar' ? 'تحليل ذكي' : 'Smart Analysis'}
-                  </h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    {summary}
-                  </p>
-                </div>
+          {/* Additional Info */}
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 bg-gray-700/30 rounded-xl border border-gray-600/30">
+              <div className="flex items-center gap-2 mb-2">
+                <Wifi className="w-5 h-5 text-blue-400" />
+                <span className="text-sm font-semibold text-gray-300">{t.speedtest.download}</span>
               </div>
+              <p className="text-xs text-gray-400">
+                {language === 'ar' 
+                  ? 'يقيس سرعة تنزيل البيانات من الإنترنت'
+                  : 'Measures data download speed from internet'}
+              </p>
             </div>
-          )}
+            <div className="p-4 bg-gray-700/30 rounded-xl border border-gray-600/30">
+              <div className="flex items-center gap-2 mb-2">
+                <Activity className="w-5 h-5 text-green-400" />
+                <span className="text-sm font-semibold text-gray-300">{t.speedtest.upload}</span>
+              </div>
+              <p className="text-xs text-gray-400">
+                {language === 'ar' 
+                  ? 'يقيس سرعة رفع البيانات إلى الإنترنت'
+                  : 'Measures data upload speed to internet'}
+              </p>
+            </div>
+            <div className="p-4 bg-gray-700/30 rounded-xl border border-gray-600/30">
+              <div className="flex items-center gap-2 mb-2">
+                <Zap className="w-5 h-5 text-yellow-400" />
+                <span className="text-sm font-semibold text-gray-300">{t.speedtest.ping}</span>
+              </div>
+              <p className="text-xs text-gray-400">
+                {language === 'ar' 
+                  ? 'يقيس زمن الاستجابة (التأخير)'
+                  : 'Measures response time (latency)'}
+              </p>
+            </div>
+          </div>
+
+          {/* Tips */}
+          <div className="mt-8 p-5 bg-gradient-to-r from-blue-900/30 to-blue-800/20 border border-blue-500/20 rounded-xl">
+            <h3 className="text-sm font-bold text-blue-300 mb-3 uppercase tracking-wide">
+              {language === 'ar' ? 'نصائح للحصول على نتائج دقيقة:' : 'Tips for Accurate Results:'}
+            </h3>
+            <ul className="space-y-2 text-sm text-blue-100">
+              <li className="flex items-start gap-2">
+                <span className="text-blue-400 mt-1">•</span>
+                <span>
+                  {language === 'ar' 
+                    ? 'أغلق التطبيقات والتنزيلات الأخرى أثناء الاختبار'
+                    : 'Close other apps and downloads during the test'}
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-400 mt-1">•</span>
+                <span>
+                  {language === 'ar' 
+                    ? 'استخدم اتصال سلكي (Ethernet) للحصول على أفضل النتائج'
+                    : 'Use a wired (Ethernet) connection for best results'}
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-400 mt-1">•</span>
+                <span>
+                  {language === 'ar' 
+                    ? 'تجنب استخدام الإنترنت من أجهزة أخرى في نفس الوقت'
+                    : 'Avoid using internet from other devices simultaneously'}
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

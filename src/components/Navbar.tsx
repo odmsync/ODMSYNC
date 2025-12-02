@@ -94,6 +94,9 @@ const Navbar: React.FC = () => {
               <div className="flex flex-col -space-y-1">
                 <span className="font-bold text-xl tracking-tight text-gray-900 dark:text-white group-hover:text-blue-900 dark:group-hover:text-blue-300">ODMSYNC</span>
                 <span className="font-mono text-xs text-blue-600 dark:text-blue-400 font-bold">odm-lb.com</span>
+                <span className="text-[10px] text-gray-500 dark:text-gray-400 font-normal mt-0.5">
+                  {t.nav.tagline}
+                </span>
               </div>
             </a>
 
@@ -105,11 +108,11 @@ const Navbar: React.FC = () => {
                   <a
                     key={link.href}
                     href={link.href}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 min-h-[44px] flex items-center touch-manipulation ${
                       isActive
-                        ? 'text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30'
-                        : 'text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800'
-                    }`}
+                        ? 'text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 font-semibold'
+                        : 'text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800 active:bg-gray-100 dark:active:bg-gray-700'
+                    } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900`}
                     aria-current={isActive ? 'page' : undefined}
                   >
                     {link.name}
@@ -124,7 +127,7 @@ const Navbar: React.FC = () => {
             {/* Theme Toggle */}
             <button 
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-2.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 text-gray-600 dark:text-gray-300 transition-all duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900"
               aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
               title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
             >
@@ -138,7 +141,7 @@ const Navbar: React.FC = () => {
             {/* Language Toggle */}
             <button 
               onClick={toggleLanguage}
-              className="hidden md:block bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full text-xs font-bold transition-colors border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="hidden md:flex items-center justify-center bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 text-gray-600 dark:text-gray-300 px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 border border-gray-200 dark:border-gray-700 min-h-[44px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900"
               aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
             >
               {language === 'en' ? (

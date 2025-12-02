@@ -69,42 +69,43 @@ const Coverage: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="grid md:grid-cols-2 gap-10 items-start animate-fade-in">
           {/* Coverage Check Form */}
-          <div className="bg-white p-8 rounded-2xl shadow-lg">
-            <h3 className="text-xl font-bold text-gray-900 mb-6">
+          <div className="bg-white dark:bg-gray-800 p-10 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 hover:shadow-2xl transition-shadow duration-300 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 focus-within:ring-offset-white dark:focus-within:ring-offset-gray-800">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
               {t.coverage.search_title}
             </h3>
-            <form onSubmit={checkCoverage} className="space-y-4">
+            <form onSubmit={checkCoverage} className="space-y-6">
               <div>
-                <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="address" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
                   {t.coverage.address_label}
                 </label>
                 <div className="relative">
-                  <div className={`absolute inset-y-0 ${dir.isRTL ? 'right-0 pr-3' : 'left-0 pl-3'} flex items-center pointer-events-none`}>
-                    <Search className="h-5 w-5 text-gray-400" />
+                  <div className={`absolute inset-y-0 ${dir.isRTL ? 'right-0 pr-4' : 'left-0 pl-4'} flex items-center pointer-events-none`}>
+                    <Search className="h-6 w-6 text-gray-400 dark:text-gray-500" />
                   </div>
                   <input
                     type="text"
                     id="address"
-                    className={`w-full ${dir.isRTL ? 'pr-10' : 'pl-10'} py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500`}
+                    className={`w-full ${dir.isRTL ? 'pr-12' : 'pl-12'} py-4 border-2 border-gray-200 dark:border-gray-600 rounded-xl min-h-[48px] touch-manipulation focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white text-base transition-all duration-200`}
                     placeholder={t.coverage.placeholder}
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     required
                     dir={dir.direction}
+                    aria-label={t.coverage.address_label}
                   />
                 </div>
               </div>
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center items-center gap-2 py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center items-center gap-3 py-4 px-6 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 active:from-blue-800 active:to-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none min-h-[52px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
               >
                 {loading ? (
                   <>
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    {language === 'ar' ? 'جاري التحقق...' : 'Checking...'}
+                    {t.coverage.checking}
                   </>
                 ) : (
                   <>
@@ -143,23 +144,23 @@ const Coverage: React.FC = () => {
           </div>
 
           {/* Covered Areas */}
-          <div className="bg-white p-8 rounded-2xl shadow-lg">
-            <h3 className="text-xl font-bold text-gray-900 mb-6">
-              {language === 'ar' ? 'المناطق المغطاة' : 'Covered Areas'}
+          <div className="bg-white dark:bg-gray-800 p-10 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 hover:shadow-2xl transition-shadow duration-300">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+              {t.coverage.covered_areas_title}
             </h3>
-            <div className="space-y-6">
+            <div className="space-y-8">
               <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="font-semibold text-gray-700">
-                    {language === 'ar' ? 'مغطاة حالياً' : 'Currently Covered'}
+                <div className="flex items-center gap-3 mb-5">
+                  <CheckCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
+                  <span className="font-bold text-gray-900 dark:text-white text-base">
+                    {t.coverage.currently_covered}
                   </span>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {areas.covered.map((area, idx) => (
                     <span 
                       key={idx}
-                      className="px-4 py-2 bg-green-100 text-green-800 text-sm font-medium rounded-full"
+                      className="px-5 py-2.5 bg-gradient-to-r from-green-100 to-green-50 dark:from-green-900/30 dark:to-green-800/20 text-green-800 dark:text-green-300 text-sm font-semibold rounded-full shadow-sm hover:shadow-md hover:scale-105 active:scale-100 transition-all duration-200 cursor-default border border-green-200 dark:border-green-700/50 touch-manipulation"
                     >
                       {area}
                     </span>
@@ -167,17 +168,17 @@ const Coverage: React.FC = () => {
                 </div>
               </div>
               <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <Clock className="w-5 h-5 text-yellow-600" />
-                  <span className="font-semibold text-gray-700">
-                    {language === 'ar' ? 'قريباً' : 'Coming Soon'}
+                <div className="flex items-center gap-3 mb-5">
+                  <Clock className="w-6 h-6 text-yellow-600 dark:text-yellow-400" />
+                  <span className="font-bold text-gray-900 dark:text-white text-base">
+                    {t.coverage.coming_soon}
                   </span>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {areas.coming.map((area, idx) => (
                     <span 
                       key={idx}
-                      className="px-4 py-2 bg-yellow-100 text-yellow-800 text-sm font-medium rounded-full"
+                      className="px-5 py-2.5 bg-gradient-to-r from-yellow-100 to-yellow-50 dark:from-yellow-900/30 dark:to-yellow-800/20 text-yellow-800 dark:text-yellow-300 text-sm font-semibold rounded-full shadow-sm hover:shadow-md hover:scale-105 active:scale-100 transition-all duration-200 cursor-default border border-yellow-200 dark:border-yellow-700/50 touch-manipulation"
                     >
                       {area}
                     </span>
@@ -186,6 +187,13 @@ const Coverage: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* WhatsApp Note */}
+        <div className="mt-8 text-center">
+          <p className="text-sm text-gray-600">
+            {t.coverage.whatsapp_note}
+          </p>
         </div>
       </div>
     </section>

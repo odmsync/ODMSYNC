@@ -23,9 +23,19 @@ export interface ApiResponse<T = unknown> {
 
 /**
  * Base API URL - configured via Vite environment variable
+ * In production on Netlify, functions are available at /.netlify/functions/
+ * For local dev, use http://localhost:8888/.netlify/functions/
  */
 const getApiBaseUrl = (): string => {
-  return import.meta.env.VITE_API_BASE_URL || 'https://api.odm-lb.com';
+  // Use Netlify Functions if available (production or local dev)
+  if (import.meta.env.DEV) {
+    // Local development with Netlify CLI
+    return 'http://localhost:8888/.netlify/functions';
+  }
+  
+  // Production: Netlify Functions are at /.netlify/functions/
+  // Fallback to custom API if VITE_API_BASE_URL is set
+  return import.meta.env.VITE_API_BASE_URL || '/.netlify/functions';
 };
 
 /**
@@ -145,8 +155,9 @@ export async function checkCoverage(
   latitude?: number,
   longitude?: number
 ): Promise<ApiResponse<{ available: boolean; estimatedSpeed?: number }>> {
+  // Use Netlify Function endpoint
   return apiRequest<{ available: boolean; estimatedSpeed?: number }>(
-    '/api/coverage/check',
+    '/coverage-check',
     {
       method: 'POST',
       body: JSON.stringify({ address, latitude, longitude }),
@@ -160,8 +171,9 @@ export async function checkCoverage(
 export async function getCoverageAreas(): Promise<
   ApiResponse<Array<{ name: string; coordinates: number[][] }>>
 > {
+  // Use Netlify Function endpoint
   return apiRequest<Array<{ name: string; coordinates: number[][] }>>(
-    '/api/coverage/areas'
+    '/coverage-areas'
   );
 }
 
@@ -197,6 +209,24 @@ export async function requestInstallationQuote(
     {
       method: 'POST',
       body: JSON.stringify(request),
+    }
+  );
+}
+
+/**
+ * Get AI-powered plan recommendation using Gemini
+ * @param prompt - User's prompt/question about plans
+ * @returns Promise resolving to Gemini API response
+ */
+export async function getPlanRecommendation(
+  prompt: string
+): Promise<ApiResponse<{ text: string; fullResponse?: unknown }>> {
+  // Use Netlify Function endpoint
+  return apiRequest<{ text: string; fullResponse?: unknown }>(
+    '/gemini',
+    {
+      method: 'POST',
+      body: JSON.stringify({ prompt }),
     }
   );
 }

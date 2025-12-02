@@ -45,7 +45,9 @@ const ServiceStatus: React.FC = () => {
             {t.status.title}
           </h2>
           <p className="text-lg text-gray-600">
-            {t.status.subtitle}
+            {language === 'ar' 
+              ? 'حالة الشبكة في الوقت الفعلي وتحديثات الصيانة لـ ODM-LB.'
+              : 'Real-time network status and maintenance updates for ODM-LB.'}
           </p>
         </div>
 
@@ -60,7 +62,9 @@ const ServiceStatus: React.FC = () => {
                 {t.status.operational}
               </h3>
               <p className="text-gray-600 mb-6 max-w-md">
-                {t.status.operational_desc}
+                {language === 'ar' 
+                  ? 'جميع الروابط الرئيسية والأبراج تعمل بشكل طبيعي. أي صيانة مخطط لها رح تعلن هون وعلى الواتساب.'
+                  : 'All main links and towers are running normally. Any planned maintenance will be announced here and on WhatsApp.'}
               </p>
               <div className="flex items-center gap-2 text-sm text-gray-500">
                 <Clock className="w-4 h-4" />

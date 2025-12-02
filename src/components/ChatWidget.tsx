@@ -1,35 +1,24 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
-import { MessageCircle, X, Send, User, Bot, AlertCircle } from 'lucide-react';
+import { MessageCircle, X, Send, User, Bot } from 'lucide-react';
 import { sendMessageToGemini } from '@/services/geminiService';
 import { ChatMessage } from '@/types';
 import { analytics } from '@/utils/analytics';
-import { config } from '@/config';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { logger } from '@/utils/logger';
-import { LIMITS, TIMEOUTS } from '@/constants';
+import { TIMEOUTS } from '@/constants';
 
 const ChatWidget: React.FC = () => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   
-  // Memoized configuration check
-  const isApiKeyConfigured = useMemo(() => !!config.api.geminiKey, []);
-
-  // Memoized welcome message to prevent recalculation
+  // Memoized welcome message (always show normal message - demo mode handled server-side)
   const welcomeMessage = useMemo(() => {
-    if (isApiKeyConfigured) {
-      return language === 'ar' 
-        ? "مرحبا! 👋 أنا ODMSYNC من دعم ODM. بدك مساعدة مع الباقات، التغطية، أو إصلاح الواي فاي؟"
-        : "Hi! 👋 I'm ODMSYNC from ODM Support. Need help with plans, coverage, or fixing Wi-Fi?";
-    }
-    return language === 'ar'
-      ? "مرحبا! 👋 أنا ODMSYNC من دعم ODM.\n\n" +
-        "أنا حالياً في وضع التجربة — محادثتك خاصة ومش متصلة بأي سيرفر."
-      : "Hi! 👋 I'm ODMSYNC from ODM Support. Need help with plans, coverage, or fixing Wi-Fi?\n\n" +
-        "I'm currently in demo mode — your chat is private and not connected to any server.";
-  }, [language, isApiKeyConfigured]);
+    return language === 'ar' 
+      ? "مرحبا! 👋 أنا ODMSYNC من دعم ODM. بدك مساعدة مع الباقات، التغطية، أو إصلاح الواي فاي؟"
+      : "Hi! 👋 I'm ODMSYNC from ODM Support. Need help with plans, coverage, or fixing Wi-Fi?";
+  }, [language]);
 
   // State initialization with memoized welcome message
   const [messages, setMessages] = useState<ChatMessage[]>(() => [
@@ -183,23 +172,6 @@ const ChatWidget: React.FC = () => {
     { label: '📅 Install', text: language === 'ar' ? 'أريد حجز موعد للتركيب' : 'I want to book an installation.' }
   ], [language]);
 
-  // Memoized demo mode notice
-  const demoModeNotice = useMemo(() => (
-    !isApiKeyConfigured && messages.length <= 1 && (
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-xs text-yellow-800">
-        <div className="flex items-start gap-2">
-          <AlertCircle className="w-4 h-4 text-yellow-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
-          <div>
-            <strong>{language === 'ar' ? 'وضع التجربة:' : 'Demo Mode:'}</strong>{' '}
-            {language === 'ar' 
-              ? 'محادثتك خاصة وبتضل على جهازك. ما في داتا بتتسيرفر.'
-              : 'Your chat is private and stays on your device. No data is sent to any server.'}
-          </div>
-        </div>
-      </div>
-    )
-  ), [isApiKeyConfigured, language, messages.length]);
-
   // Memoized chat header to prevent unnecessary re-renders
   const chatHeader = useMemo(() => (
     <div className="bg-gradient-to-r from-blue-700 to-blue-500 p-4 text-white flex justify-between items-center shadow-md flex-shrink-0">
@@ -210,17 +182,10 @@ const ChatWidget: React.FC = () => {
         <div>
           <h3 id="chat-header" className="font-bold text-lg">ODMSYNC</h3>
           <p className="text-xs text-blue-100 flex items-center opacity-90">
-            {isApiKeyConfigured ? (
-              <>
-                <span className="w-2 h-2 bg-blue-400 rounded-full mr-1 animate-pulse"></span> 
-                {language === 'ar' ? 'متصل 24/7' : 'Online 24/7'}
-              </>
-            ) : (
-              <>
-                <span className="w-2 h-2 bg-yellow-400 rounded-full mr-1"></span> 
-                {language === 'ar' ? 'وضع التجربة' : 'Demo Mode'}
-              </>
-            )}
+            <>
+              <span className="w-2 h-2 bg-blue-400 rounded-full mr-1 animate-pulse"></span> 
+              {language === 'ar' ? 'متصل 24/7' : 'Online 24/7'}
+            </>
           </p>
         </div>
       </div>
@@ -232,7 +197,7 @@ const ChatWidget: React.FC = () => {
         <X className="w-6 h-6" />
       </button>
     </div>
-  ), [isApiKeyConfigured, language]);
+  ), [language]);
 
   return (
     <>
@@ -276,8 +241,6 @@ const ChatWidget: React.FC = () => {
             ))}
             
             {isLoading && <LoadingIndicator language={language} />}
-            
-            {demoModeNotice}
             
             <div ref={messagesEndRef} />
           </div>
@@ -394,7 +357,7 @@ const InputArea = React.memo(({
   setInput: (value: string) => void,
   handleSend: () => void,
   isLoading: boolean,
-  inputRef: React.RefObject<HTMLInputElement>,
+  inputRef: React.RefObject<HTMLInputElement | null>,
   language: string
 }) => (
   <div className="p-4 bg-white border-t border-gray-200 flex items-center gap-2 flex-shrink-0">

@@ -24,14 +24,16 @@ const ProblemSolution: React.FC = () => {
             {t.problem.title}
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            {t.problem.subtitle}
+            {language === 'ar' 
+              ? 'تعبت من الإنترنت اللي بيموت مع الكهربا؟ هون كيف نحنا نحلها.'
+              : "Tired of internet that dies with the electricity? Here's how we fix it."}
           </p>
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-8">
           {/* Problem */}
           <article 
-            className={`bg-white p-8 ${borderRadius.xl} shadow-md w-full md:w-1/3 ${dir.borderStart} border-red-500`}
+            className={`bg-white dark:bg-gray-800 p-8 ${borderRadius.xl} shadow-md hover:shadow-lg w-full md:w-1/3 ${dir.borderStart} border-red-500 transition-all duration-300`}
             aria-labelledby="problem-title"
           >
             <h3 
@@ -48,7 +50,7 @@ const ProblemSolution: React.FC = () => {
                     className={`w-5 h-5 text-red-400 ${dir.mr2} mt-1 flex-shrink-0`} 
                     aria-hidden="true"
                   />
-                  <span className="text-gray-600">{point}</span>
+                  <span className="text-gray-600 dark:text-gray-300 leading-relaxed">{point}</span>
                 </li>
               ))}
             </ul>
@@ -63,7 +65,7 @@ const ProblemSolution: React.FC = () => {
 
           {/* Solution */}
           <article 
-            className={`bg-blue-50 p-8 ${borderRadius.xl} shadow-lg w-full md:w-1/3 ${dir.borderStart} border-blue-500 transform md:scale-105 ${transitions.transform}`}
+            className={`bg-blue-50 dark:bg-blue-900/20 p-8 ${borderRadius.xl} shadow-lg hover:shadow-xl w-full md:w-1/3 ${dir.borderStart} border-blue-500 transform md:scale-105 hover:scale-110 ${transitions.transform}`}
             aria-labelledby="solution-title"
           >
             <h3 
@@ -80,7 +82,7 @@ const ProblemSolution: React.FC = () => {
                     className={`w-5 h-5 text-blue-600 ${dir.mr2} mt-1 flex-shrink-0`} 
                     aria-hidden="true"
                   />
-                  <span className="text-blue-900">{point}</span>
+                  <span className="text-blue-900 dark:text-blue-100 leading-relaxed">{point}</span>
                 </li>
               ))}
             </ul>

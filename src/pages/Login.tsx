@@ -66,7 +66,9 @@ const Login: React.FC = () => {
               {t.login.title}
             </h2>
             <p className="text-gray-600">
-              {t.login.subtitle}
+              {language === 'ar' 
+                ? 'البوابة قيد التطوير. حالياً، إدارة حسابك عبر واتساب أو تلفون مع فريق الدعم.'
+                : 'Portal is under development. For now, manage your account by WhatsApp or phone with our support team.'}
             </p>
           </div>
 

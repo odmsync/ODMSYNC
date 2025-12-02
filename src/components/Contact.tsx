@@ -125,7 +125,9 @@ const Contact: React.FC = () => {
               <div className="flex items-start gap-4">
                 <MapPin className="w-6 h-6 text-blue-300 flex-shrink-0 mt-1" />
                 <div>
-                  <p className="text-white">{config.contact.address}</p>
+                  <p className="text-white">
+                    {t.contact.location_text}
+                  </p>
                 </div>
               </div>
 
@@ -143,10 +145,10 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 md:p-8">
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 md:p-10 shadow-2xl border border-gray-100 dark:border-gray-700">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   {t.contact.name}
                 </label>
                 <input
@@ -155,16 +157,24 @@ const Contact: React.FC = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
-                    errors.name ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full px-5 py-3.5 text-base border-2 rounded-xl min-h-[48px] touch-manipulation focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600 transition-all duration-200 ${
+                    errors.name 
+                      ? 'border-red-500 dark:border-red-500 focus:ring-red-500 focus:border-red-500' 
+                      : 'border-gray-300 dark:border-gray-600 focus:border-blue-500'
                   }`}
                   dir={dir.direction}
+                  aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? 'name-error' : undefined}
                 />
-                {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
+                {errors.name && (
+                  <p id="name-error" className="mt-2 text-sm text-red-600 dark:text-red-400 font-medium" role="alert">
+                    {errors.name}
+                  </p>
+                )}
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   {t.contact.email}
                 </label>
                 <input
@@ -173,15 +183,23 @@ const Contact: React.FC = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
-                    errors.email ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full px-5 py-3.5 text-base border-2 rounded-xl min-h-[48px] touch-manipulation focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600 transition-all duration-200 ${
+                    errors.email 
+                      ? 'border-red-500 dark:border-red-500 focus:ring-red-500 focus:border-red-500' 
+                      : 'border-gray-300 dark:border-gray-600 focus:border-blue-500'
                   }`}
+                  aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? 'email-error' : undefined}
                 />
-                {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+                {errors.email && (
+                  <p id="email-error" className="mt-2 text-sm text-red-600 dark:text-red-400 font-medium" role="alert">
+                    {errors.email}
+                  </p>
+                )}
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   {t.contact.phone}
                 </label>
                 <input
@@ -190,16 +208,24 @@ const Contact: React.FC = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
-                    errors.phone ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full px-5 py-3.5 text-base border-2 rounded-xl min-h-[48px] touch-manipulation focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600 transition-all duration-200 ${
+                    errors.phone 
+                      ? 'border-red-500 dark:border-red-500 focus:ring-red-500 focus:border-red-500' 
+                      : 'border-gray-300 dark:border-gray-600 focus:border-blue-500'
                   }`}
                   dir="ltr"
+                  aria-invalid={!!errors.phone}
+                  aria-describedby={errors.phone ? 'phone-error' : undefined}
                 />
-                {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
+                {errors.phone && (
+                  <p id="phone-error" className="mt-2 text-sm text-red-600 dark:text-red-400 font-medium" role="alert">
+                    {errors.phone}
+                  </p>
+                )}
               </div>
 
               <div>
-                <label htmlFor="type" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="type" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   {t.contact.subject}
                 </label>
                 <select
@@ -207,7 +233,7 @@ const Contact: React.FC = () => {
                   name="type"
                   value={formData.type}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-5 py-3.5 text-base border-2 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-xl min-h-[48px] touch-manipulation focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 cursor-pointer"
                 >
                   <option value="support">{t.contact.subjects.support}</option>
                   <option value="sales">{t.contact.subjects.sales}</option>
@@ -216,7 +242,7 @@ const Contact: React.FC = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   {t.contact.message}
                 </label>
                 <textarea
@@ -224,19 +250,36 @@ const Contact: React.FC = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows={4}
-                  className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
-                    errors.message ? 'border-red-500' : 'border-gray-300'
+                  rows={5}
+                  className={`w-full px-5 py-3.5 text-base border-2 rounded-xl min-h-[120px] touch-manipulation focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600 transition-all duration-200 resize-none ${
+                    errors.message 
+                      ? 'border-red-500 dark:border-red-500 focus:ring-red-500 focus:border-red-500' 
+                      : 'border-gray-300 dark:border-gray-600 focus:border-blue-500'
                   }`}
                   dir={dir.direction}
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? 'message-error' : undefined}
                 />
-                {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
+                {errors.message && (
+                  <p id="message-error" className="mt-2 text-sm text-red-600 dark:text-red-400 font-medium" role="alert">
+                    {errors.message}
+                  </p>
+                )}
               </div>
 
+              <a
+                href="https://wa.me/96170977970"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full px-6 py-4 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 active:from-green-800 active:to-green-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 mb-4 min-h-[52px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
+              >
+                {t.contact.whatsapp_button}
+                <Send className="h-5 w-5" />
+              </a>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 active:from-blue-800 active:to-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 min-h-[52px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
               >
                 {isSubmitting ? (
                   <>

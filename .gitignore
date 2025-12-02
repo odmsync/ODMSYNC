@@ -41,3 +41,6 @@ npx.ps1
 # Build outputs
 dist/
 build/
+
+# Test files
+test-gemini.js
