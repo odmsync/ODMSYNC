@@ -10,7 +10,7 @@ interface LogEntry {
 }
 
 class Logger {
-  private isDevelopment = import.meta.env.DEV || process.env.NODE_ENV === 'development';
+  private isDevelopment = import.meta.env.DEV;
 
   private log(level: LogLevel, message: string, data?: unknown): void {
     const entry: LogEntry = {
@@ -51,4 +51,3 @@ class Logger {
 }
 
 export const logger = new Logger();
-

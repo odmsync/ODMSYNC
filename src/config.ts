@@ -1,26 +1,16 @@
 /**
  * Configuration module
  * Centralized app configuration with environment variable handling
+ * Uses ONLY import.meta.env (Vite client-side environment variables)
  */
 
 /**
- * Get API key from environment (works in both Vite and Node.js contexts)
+ * Get API key from environment (client-side only)
  * @returns API key string or empty string if not found
  */
 const getApiKey = (): string => {
-  // In Vite client-side: use import.meta.env (VITE_ prefix required for client access)
-  if (typeof window !== 'undefined') {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const env = (import.meta as any).env;
-    if (env) {
-      return env.VITE_GEMINI_API_KEY || env.GEMINI_API_KEY || '';
-    }
-  }
-  // In Node.js/server-side: use process.env
-  if (typeof process !== 'undefined' && process.env) {
-    return process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY || '';
-  }
-  return '';
+  // Only use import.meta.env - Vite automatically exposes VITE_ prefixed vars
+  return import.meta.env.VITE_GEMINI_API_KEY || '';
 };
 
 /**
@@ -32,11 +22,8 @@ const getBaseUrl = (): string => {
     // Client-side: use current origin
     return window.location.origin;
   }
-  // Server-side: use environment variable or default
-  if (typeof process !== 'undefined' && process.env) {
-    return process.env.VITE_SITE_URL || process.env.SITE_URL || 'https://odm-lb.com';
-  }
-  return 'https://odm-lb.com';
+  // Fallback for SSR (shouldn't happen in this SPA)
+  return import.meta.env.VITE_SITE_URL || 'https://odm-lb.com';
 };
 
 /**

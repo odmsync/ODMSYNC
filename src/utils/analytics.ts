@@ -1,4 +1,3 @@
-
 export type EventName = 
   | 'speed_test_start' 
   | 'speed_test_complete' 
@@ -20,7 +19,7 @@ export const analytics = {
   track: (event: EventName, properties?: EventProperties) => {
     // In a real production environment, this would send data to Google Analytics, Mixpanel, etc.
     // For now, we log to console with a distinctive prefix for debugging.
-    const isDev = import.meta.env.DEV || process.env.NODE_ENV !== 'production';
+    const isDev = import.meta.env.DEV;
     
     if (isDev) {
       console.groupCollapsed(`[Analytics] 📊 ${event}`);

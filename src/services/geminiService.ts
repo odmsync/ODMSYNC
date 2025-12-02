@@ -1,12 +1,10 @@
-
 import { GoogleGenAI } from "@google/genai";
 import { SYSTEM_INSTRUCTION, LIMITS } from "@/constants";
 import { ChatMessage, SpeedTestRecommendation } from "@/types";
-import { config } from "@/config";
 import { logger } from "@/utils/logger";
 
-// Initialize the client from config
-const apiKey = config.api.geminiKey;
+// Get API key directly from environment (Vite client-side only)
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 /**

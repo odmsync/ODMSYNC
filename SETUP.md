@@ -13,8 +13,9 @@
 
 3. **Configure API Key** (Optional)
    - Create `.env.local` file
-   - Add: `GEMINI_API_KEY=your_key_here`
+   - Add: `VITE_GEMINI_API_KEY=your_key_here`
    - Note: Website works without this, but chat feature won't function
+   - Important: Only variables starting with `VITE_` are exposed to the client
 
 4. **Run Development Server**
    ```bash
@@ -36,7 +37,8 @@
 - Change port in `vite.config.ts` or stop the process using the port
 
 **API key errors**
-- Ensure `.env.local` has a valid Gemini API key, or leave empty if chat isn't needed
+- Ensure `.env.local` has `VITE_GEMINI_API_KEY` set, or leave empty if chat isn't needed
+- For Netlify deployment, set `VITE_GEMINI_API_KEY` in Netlify Dashboard → Environment Variables
 
 ## Support
 

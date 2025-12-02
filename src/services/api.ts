@@ -3,7 +3,6 @@
  * Handles all backend API calls with proper error handling and timeouts
  */
 
-import { config } from '@/config';
 import { TIMEOUTS } from '@/constants';
 import { logger } from '@/utils/logger';
 
@@ -23,13 +22,10 @@ export interface ApiResponse<T = unknown> {
 }
 
 /**
- * Base API URL - can be configured via environment variable
+ * Base API URL - configured via Vite environment variable
  */
 const getApiBaseUrl = (): string => {
-  if (typeof window !== 'undefined' && import.meta.env) {
-    return import.meta.env.VITE_API_BASE_URL || 'https://api.odm-lb.com';
-  }
-  return process.env.VITE_API_BASE_URL || 'https://api.odm-lb.com';
+  return import.meta.env.VITE_API_BASE_URL || 'https://api.odm-lb.com';
 };
 
 /**
@@ -204,4 +200,3 @@ export async function requestInstallationQuote(
     }
   );
 }
-
